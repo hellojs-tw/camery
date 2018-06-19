@@ -12,17 +12,8 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
+  title: 'HelloJS',
   tabBarLabel: '探索',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
 };
 
 const LinksStack = createStackNavigator({
@@ -30,13 +21,8 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
+  title: 'HelloJS',
   tabBarLabel: '拍照',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
-    />
-  ),
 };
 
 const SettingsStack = createStackNavigator({
@@ -44,17 +30,34 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
+  title: 'HelloJS',
   tabBarLabel: '帳號',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
-    />
-  ),
 };
 
+const tabNavigatorConfig = {
+  tabBarOptions: {
+    activeTintColor: '#F2F2F2',
+    inactiveTintColor: '#F2F2F2',
+    labelStyle: {
+      color: '#000',
+    },
+    indicatorStyle: {
+      backgroundColor: '#FB2746',
+    },
+    style: {
+      backgroundColor: '#F2F2F2',
+      ...Platform.OS === 'ios' ? {
+        paddingTop: 20,
+      } : {},
+    },
+  }
+}
+
+
+// 文件
+// https://reactnavigation.org/docs/en/material-top-tab-navigator.html
 export default createMaterialTopTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-});
+}, tabNavigatorConfig);
