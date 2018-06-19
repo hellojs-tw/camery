@@ -45,10 +45,8 @@ const tabNavigatorConfig = {
       backgroundColor: '#FB2746',
     },
     style: {
+      paddingTop: 20,
       backgroundColor: '#F2F2F2',
-      ...Platform.OS === 'ios' ? {
-        paddingTop: 20,
-      } : {},
     },
   }
 }
